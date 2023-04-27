@@ -1,6 +1,6 @@
 
 
-import { Btn } from 'daisyui';
+
 
 function App() {
   return (
