@@ -1,44 +1,41 @@
 
 
+import { useEffect } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation
+} from 'react-router-dom';
+import Navbar from "./pages/global/Navbar"
+import Home from "./pages/home/Home";
+import ItemDetails from "./pages/itemDetails/ItemDetails"
+import Checkout from "./pages/checkout/Checkout"
+import Confirmation from "./pages/checkout/Confirmation"
 
+
+// To start from the top of the page when going to a different page
+const ScrollToTop = () => {
+  const { pathName } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathName]);
+};
 
 function App() {
   return (
-    <div className="App"
-    >
-      <header className="App-header">
-        
-        <p className='text-3x italic underline'>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <div className="card w-96 bg-base-100 shadow-xl">
-  <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
-
-      </header>
-
-      <div className="chat chat-start">
-  <div className="chat-bubble">It's over Anakin, <br/>I have the high ground.</div>
-</div>
-<div className="chat chat-end">
-  <div className="chat-bubble">You underestimate my power!</div>
-</div>
+    <div className="App">
+      <BrowserRouter>
+        <Navbar />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="item/:itemId" element={<ItemDetails />}/>
+          <Route path="checkout" element={<Checkout/>}/>
+          <Route path="confirmation" element={<Confirmation />}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
