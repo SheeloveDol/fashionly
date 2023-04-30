@@ -28,7 +28,7 @@ const Navbar = () => {
           <button onClick={() => dispatch(setIsCartOpen({}))}
             className="border relative"  
           >
-            <div className="badge badge-xs absolute border top-0 bg-red-500 rounded-full text-white border-none " >{cart.length}</div>
+            <div className={`absolute inline-flex items-center justify-center w-3 h-3 text-xs font-bold text-white bg-red-500 border-1 border-white rounded-full -top-1 -right-2 dark:border-gray-900 ${cart.length === 0 ? 'invisible' : 'visible' }`} >{cart.length}</div>
             <MdOutlineShoppingBag className="hover cursor-pointer"/>
           </button>
           <button>
