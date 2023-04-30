@@ -25,7 +25,8 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App"
+    data-theme="cyberpunk">
       <BrowserRouter>
         <Navbar />
         <ScrollToTop />
