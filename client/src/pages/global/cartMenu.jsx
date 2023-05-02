@@ -96,7 +96,6 @@ const CartMenu = () => {
                   </div>
                 </FlexBox>
                 <div className="divider"></div>
-                {/* ADD A DIVIDER HERE LATER */}
               </div>
             ))}
           </div>

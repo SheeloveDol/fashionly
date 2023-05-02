@@ -18,7 +18,7 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <div className="App h-full" >
+    <div className="App h-full" data-theme="bumblebee" >
       <BrowserRouter>
         <Navbar />
         <ScrollToTop />
