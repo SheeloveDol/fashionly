@@ -35,7 +35,7 @@ const CartMenu = () => {
         <div className="p-[30px] overflow-auto h-full">
           {/* Header */}
           <FlexBox className="mb-[15px]">
-            <p>SHOPPING BAG ({cart.length})</p>
+            <p className="text-lg font-bold">SHOPPING BAG ({cart.length})</p>
             <button onClick={() => dispatch(setIsCartOpen({}))}>
               <MdClose />
             </button>
@@ -104,14 +104,15 @@ const CartMenu = () => {
           {/* ACTIONS */}
           <div className="my-[20px]">
             <FlexBox className="my-[20px]">
-              <p>SUBTOTAL</p>
-              <p>${totalPrice}</p>
+              <p className="font-bold">SUBTOTAL</p>
+              <p className="font-bold">${totalPrice}</p>
             </FlexBox>
             <button
               onClick={() => {
                 navigate("/checkout");
                 dispatch(setIsCartOpen({}));
               }}
+              className="btn min-w-full mt-[20px]"
             >
               CHECKOUT
             </button>
