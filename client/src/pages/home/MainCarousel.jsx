@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import Slide1 from "../../assets/addy-pura-hDJQbhb5GE4-unsplash.jpg"
+import Slide1 from "../../assets/sammie-chaffin-RmO3If0EYHM-unsplash.jpg"
 import Slide2 from "../../assets/alexander-andrews-C-Cirku0Ei0-unsplash.jpg"
 import Slide3 from "../../assets/brian-wangenheim-CIfJMx4qKRY-unsplash.jpg"
 import Slide4 from "../../assets/brooke-cagle-hHcHf4mOFgk-unsplash.jpg"
@@ -22,20 +22,27 @@ const MainCarousel = () => {
 
   return (
     <Carousel 
-        showArrows={true}
+        
         showThumbs={false}
         infiniteLoop={true}
         showIndicators={false}
         showStatus={false}
+        
     >
         {
             imagesArray.map((image, index) => (
                 <div key={index}>
                     <img 
-                        className='h-[500px] object-cover bg-fixed'
+                        className='object-cover bg-fixed '
                         src={image}
                         alt={`model-${index}`}
                     />
+
+                    <div className="text-white p-[20px] rounded-md text-left bg-black/[.40] absolute top-1/2 left-0 sm:left-[10%]  right-0 sm:right-auto max-w-[240px] sm:max-w-none">
+                        <p className='text-xs text-red-300'>NEW ITEMS</p>
+                        <p className='text-2xl'>SUMMER SALE</p>
+                        <p className='text-xs font-bold underline text-red-500'>Discover More</p>
+                    </div>
                 </div>
             ))
         }

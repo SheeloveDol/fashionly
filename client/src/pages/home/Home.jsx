@@ -3,7 +3,7 @@ import MainCarousel from "./MainCarousel";
 
 const Home = () => {
   return (
-    <div className='w-full absolute top-14'>
+    <div className='w-full absolute top-[60px]'>
       <MainCarousel  />
     </div>
   )
