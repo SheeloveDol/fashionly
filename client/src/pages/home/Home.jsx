@@ -1,9 +1,10 @@
 import React from 'react'
+import MainCarousel from "./MainCarousel";
 
 const Home = () => {
   return (
-    <div>
-      HOME
+    <div className='w-full absolute top-14'>
+      <MainCarousel  />
     </div>
   )
 }
