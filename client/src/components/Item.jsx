@@ -42,7 +42,7 @@ const Item = ({ item, width }) => {
                 className='flex justify-between'
             >   
                 <div
-                className='flex items-center justify-between rounded-[3px] bg-slate-100 py-1 px-3 w-24'
+                className='btn btn-outline btn-primary flex items-center justify-between rounded-[3px] py-1 px-3 w-24'
                 >
                     <button onClick={() => setCount(Math.max(count - 1, 1))}>
                         <MdRemove />
@@ -53,7 +53,7 @@ const Item = ({ item, width }) => {
                     </button>
                 </div>
                 <button
-                    className='text-white bg-accent'
+                    className='btn btn-accent'
                     onClick={() => {
                         dispatch(addToCart({ item: {...item, count}}))
                     }}
