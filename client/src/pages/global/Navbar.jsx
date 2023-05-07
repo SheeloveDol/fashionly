@@ -12,7 +12,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="flex items-center justify-center h-[60px] w-full fixed top-0 left-0 z-1 bg-white/95 ">
+    <nav className="flex items-center justify-center h-[60px] w-full fixed top-0 left-0 z-10 bg-white/95 ">
       <div 
         className="flex w-4/5 m-auto justify-between items-center">
         <div onClick={() => navigate("/")} className="cursor-pointer hover">

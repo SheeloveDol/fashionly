@@ -30,9 +30,9 @@ const Item = ({ item, width }) => {
         onMouseOut={() => setIsHovered(false)}
       >
         <img 
-            className='w-[300px] h-[400px] cursor-pointer'
+            className='w-full h-[400px] cursor-pointer '
             alt={item.name}
-            scr={`http://localhost:1337${url}`}
+            src={`http://localhost:1337${url}`}
             onClick={() => navigate(`/item/${item.id}`)}
         />
         <div
@@ -42,7 +42,7 @@ const Item = ({ item, width }) => {
                 className='flex justify-between'
             >   
                 <div
-                className='flex items-center rounded-[3px]'
+                className='flex items-center justify-between rounded-[3px] bg-slate-100 py-1 px-3 w-24'
                 >
                     <button onClick={() => setCount(Math.max(count - 1, 1))}>
                         <MdRemove />
@@ -53,7 +53,7 @@ const Item = ({ item, width }) => {
                     </button>
                 </div>
                 <button
-                    className='text-white bg-primary-300'
+                    className='text-white bg-accent'
                     onClick={() => {
                         dispatch(addToCart({ item: {...item, count}}))
                     }}
@@ -65,9 +65,7 @@ const Item = ({ item, width }) => {
       </div>
       <div className='mt-[3px]'>
         <p>
-            {category
-                .replace(/([A-Z])/g, " $1")
-                .replace(/^./, (str) => str.toUpperCase())}
+            {category?.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
         </p>
         <p>{name}</p>
         <p className='font-bold'>${price}</p>
