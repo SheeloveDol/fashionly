@@ -42,7 +42,7 @@ const Item = ({ item, width }) => {
                 className='flex justify-between'
             >   
                 <div
-                className='btn btn-outline btn-primary flex items-center justify-between rounded-[3px] py-1 px-3 w-24'
+                className='btn btn-secondary flex items-center justify-between rounded-[3px] py-1 px-3 w-24'
                 >
                     <button onClick={() => setCount(Math.max(count - 1, 1))}>
                         <MdRemove />
@@ -64,7 +64,7 @@ const Item = ({ item, width }) => {
         </div>
       </div>
       <div className='mt-[3px]'>
-        <p>
+        <p className='text-xs text-slate-500'>
             {category?.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}
         </p>
         <p>{name}</p>

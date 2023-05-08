@@ -16,7 +16,7 @@ const ShoppingList = () => {
     setValue(newValue);
   };
 
-  console.log("items", items);
+//   console.log("items", items);
 
   // Function to get items info from Strapi backend
   const getItems = async () => {
@@ -44,36 +44,44 @@ const ShoppingList = () => {
 
   return (
     <div className="w-4/5 my-20 mx-auto">
-      <h3 className="text-center">
+      <h3 className="text-center text-2xl mb-12 sm:mb-0">
         Featured <b>Products</b>
       </h3>
       <div
-        className="hidden sm:block m-6 tabs text-center "
+        className="hidden sm:block m-12 tabs text-center "
         value={value}
-        onChange={handleChange}
+        // onClick={handleChange}
       >
         <p
-          // label='ALL'
+          label='ALL'
           value="all"
-          className="tab tab-bordered"
+          className={(value === "all") ? `tab tab-active tab-bordered` :`tab tab-bordered`}
+          onClick={() => handleChange(null, 'all')}
         >
           ALL
         </p>
         <p
           label="NEW ARRIVALS"
           value="newArrivals"
-          className="tab tab-bordered"
+          className={(value === "newArrivals") ? `tab tab-active tab-bordered` :`tab tab-bordered`}
+          onClick={() => handleChange(null, 'newArrivals')}
         >
           NEW ARRIVALS
         </p>
         <p
           label="BEST SELLERS"
           value="bestSellers"
-          className="tab tab-bordered"
+          className={(value === "bestSellers") ? `tab tab-active tab-bordered` :`tab tab-bordered`}
+          onClick={() => handleChange(null, 'bestSellers')}
         >
           BEST SELLERS
         </p>
-        <p label="TOP RATED" value="topRated" className="tab tab-bordered">
+        <p 
+            label="TOP RATED" 
+            value="topRated" 
+            className={(value === "topRated") ? `tab tab-active tab-bordered` :`tab tab-bordered`}
+            onClick={() => handleChange(null, 'topRated')}
+        >
           TOP RATED
         </p>
       </div>
