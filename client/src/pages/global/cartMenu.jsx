@@ -14,12 +14,19 @@ const CartMenu = () => {
   const cart = useSelector((state) => state.cart.cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
 
-  const totalPrice = cart.reduce((total, item) => {
-    return total + item.count * item.attributes.price;
-  }, 0);
+  // const totalPrice = cart.reduce((total, item) => {
+  //   return total + item.count * item.attributes.price;
+  // }, 0);
 
-  const FlexBox = ({ children }) => {
-    return <div className="flex items-center justify-between ">{children}</div>;
+  const totalPrice = cart.reduce((total, item) => {
+    if (item.attributes && item.attributes.price) {
+      return total + item.count * item.attributes.price;
+    }
+    return total;
+  }, 0)
+
+  const FlexBox = ({ children, className }) => {
+    return <div className={`flex items-center justify-between ${className} `}>{children}</div>;
   };
 
   return (
@@ -31,10 +38,10 @@ const CartMenu = () => {
       }
     >
       {/* Modal TODO: MAX WIDTH*/}
-      <div className="fixed right-0 bottom-0 w-[400px] h-full bg-white">
-        <div className="p-[30px] overflow-auto h-full">
+      <div className="fixed right-0 bottom-0 w-[500px] h-full bg-white">
+        <div className="p-[30px] overflow-auto h-full ">
           {/* Header */}
-          <FlexBox className="mb-[15px]">
+          <FlexBox className="mb-5">
             <p className="text-lg font-bold">SHOPPING BAG ({cart.length})</p>
             <button onClick={() => dispatch(setIsCartOpen({}))}>
               <MdClose />
@@ -44,7 +51,7 @@ const CartMenu = () => {
           {/* Cart list */}
           <div>
             {cart.map((item) => (
-              <div key={`${item.attributes.name}-${item.id}`}>
+              <div key={`${item.attributes?.name}-${item.id}`}>
                 <FlexBox className="py-[15px] px-[0px]">
                   <div className="flex basis-2/5 grow shrink">
                     <img
@@ -55,9 +62,9 @@ const CartMenu = () => {
                   </div>
 
                   {/* ITEM NAME */}
-                  <div className="flex basis-3/5 grow shrink">
+                  <div className="flex-1 basis-3/5">
                     <FlexBox className="mb-[15px]">
-                      <p className="font-bold">{item.attributes.name}</p>
+                      <p className="text-xs font-bold">{item.attributes?.name}</p>
                       <button
                         onClick={() =>
                           dispatch(removeFromCart({ id: item.id }))
@@ -68,30 +75,28 @@ const CartMenu = () => {
                     </FlexBox>
 
                     {/*ITEM SHORT DESCRIPTION */}
-                    <p>{item.attributes.shortDescription}</p>
+                    <p className="text-xs ">{item.attributes?.shortDescription}</p>
 
                     {/* NUMBER OF ITEMS */}
-                    <FlexBox className="my-15px">
-                      <div className="flex items-center border-[1.5px]">
-                        <button
-                          onClick={() =>
-                            dispatch(decreaseItemCount({ id: item.id }))
-                          }
-                        >
-                          <MdRemove />
-                        </button>
+                    <FlexBox className="my-[15px]">
+                      <div className="flex btn btn-outline items-center border-[1.5px]">
+                          <MdRemove 
+                            className="cursor-pointer border-2"
+                            onClick={() =>
+                              dispatch(decreaseItemCount({ id: item.id }))
+                            }
+                          />
                         <p>{item.count}</p>
-                        <button
-                          onClick={() =>
-                            dispatch(increaseItemCount({ id: item.id }))
-                          }
-                        >
-                          <MdAdd />
-                        </button>
+                          <MdAdd 
+                            className="cursor-pointer border-2"
+                            onClick={() =>
+                              dispatch(increaseItemCount({ id: item.id }))
+                            }
+                          />
                       </div>
 
                       {/* PRICE */}
-                      <p>${item.attributes.price}</p>
+                      <p>${item.attributes?.price}</p>
                     </FlexBox>
                   </div>
                 </FlexBox>
