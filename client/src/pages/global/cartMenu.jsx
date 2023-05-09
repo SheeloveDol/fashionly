@@ -43,8 +43,11 @@ const CartMenu = () => {
           {/* Header */}
           <FlexBox className="mb-5">
             <p className="text-lg font-bold">SHOPPING BAG ({cart.length})</p>
-            <button onClick={() => dispatch(setIsCartOpen({}))}>
-              <MdClose />
+            <button 
+              className="btn btn-square rounded-none"
+              onClick={() => dispatch(setIsCartOpen({}))}
+            >
+              <MdClose className="text-2xl" />
             </button>
           </FlexBox>
 
@@ -79,16 +82,16 @@ const CartMenu = () => {
 
                     {/* NUMBER OF ITEMS */}
                     <FlexBox className="my-[15px]">
-                      <div className="flex btn btn-outline items-center border-[1.5px]">
+                      <div className="flex btn btn-outline rounded-none p-0 justify-between items-center border-[1.5px]">
                           <MdRemove 
-                            className="cursor-pointer border-2"
+                            className="cursor-pointer mx-4"
                             onClick={() =>
                               dispatch(decreaseItemCount({ id: item.id }))
                             }
                           />
                         <p>{item.count}</p>
                           <MdAdd 
-                            className="cursor-pointer border-2"
+                            className="cursor-pointer mx-4"
                             onClick={() =>
                               dispatch(increaseItemCount({ id: item.id }))
                             }
@@ -116,7 +119,7 @@ const CartMenu = () => {
                 navigate("/checkout");
                 dispatch(setIsCartOpen({}));
               }}
-              className="btn min-w-full mt-[20px]"
+              className="btn min-w-full mt-[20px] rounded-none"
             >
               CHECKOUT
             </button>

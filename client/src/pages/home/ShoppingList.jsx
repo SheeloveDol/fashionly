@@ -16,7 +16,7 @@ const ShoppingList = () => {
     setValue(newValue);
   };
 
-  console.log("items", items);
+  // console.log("items", items);
 
   // Function to get items info from Strapi backend
   const getItems = async () => {
