@@ -6,6 +6,7 @@ import ItemDetails from "./pages/itemDetails/ItemDetails";
 import Checkout from "./pages/checkout/Checkout";
 import Confirmation from "./pages/checkout/Confirmation";
 import CartMenu from "./pages/global/CartMenu";
+import Footer from "./pages/global/Footer";
 
 // To start from the top of the page when going to a different page
 const ScrollToTop = () => {
@@ -29,6 +30,7 @@ function App() {
           <Route path="confirmation" element={<Confirmation />} />
         </Routes>
         <CartMenu />
+        <Footer />
       </BrowserRouter>
     </div>
   );

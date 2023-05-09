@@ -38,7 +38,7 @@ const CartMenu = () => {
       }
     >
       {/* Modal TODO: MAX WIDTH*/}
-      <div className="fixed right-0 bottom-0 w-[500px] h-full bg-white">
+      <div className="fixed right-0 bottom-0 w-full sm:w-[500px] h-full bg-white">
         <div className="p-[30px] overflow-auto h-full ">
           {/* Header */}
           <FlexBox className="mb-5">
