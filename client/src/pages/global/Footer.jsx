@@ -10,7 +10,7 @@ const Footer = () => {
         <div className='md:w-1/5 md:w-3/10 lg:w-2/5 '>
             <h4 className='mb-3 sm:mb-7 font-bold text-secondary-content'>Fashionly</h4>
             <div>
-                Uspendisse vel mi ac augue commodo ultricies a sed risus. Vestibulum eu elit pulvinar, convallis ligula id, lobortis nibh. Praesent varius id nulla a hendrerit. Curabitur tincidunt blandit urna, vel fringilla sem sagittis id. Suspendisse cursus enim at neque tincidunt semper.
+                Uspendisse vel mi ac augue commodo ultricies a sed risus. Vestibulum eu elit pulvinar, convallis ligula id, lobortis nibh. Praesent varius id nulla a hendrerit. 
             </div>
         </div>
         <div className='mt-7 md:mt-0'>
