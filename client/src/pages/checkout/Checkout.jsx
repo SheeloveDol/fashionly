@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import Shipping from './Shipping';
 
 const initialValues = {
   billingAddress: {
