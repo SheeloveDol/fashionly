@@ -31,7 +31,7 @@ const ItemDetails = () => {
   //For related products
   const getItems = async () => {
     const items = await fetch(
-      `http://localhost:1337/api/items/${itemId}?populate=image`,
+      `http://localhost:1337/api/items?populate=image`,
       { method: "GET" }
     );
     const itemsJson = await items.json();
@@ -41,7 +41,7 @@ const ItemDetails = () => {
   useEffect(() => {
     getItem();
     getItems();
-  }, [itemId]); // esling-disable-line react-hooks/exhaustive-deps
+  }, [itemId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="relative top-[60px] w-4/5 mx-auto">
@@ -129,12 +129,12 @@ const ItemDetails = () => {
       </div>
 
       {/* RELATED ITEMS */}
-      <div className="w-full mt-12">
+      <div className="w-full mt-12 ">
         <h3 className="text-xl font-bold">Related Products</h3>
-        <div className="mt-5 flex flex-wrap gap-x-2 justify-between">
-        {/* {items.slice(0,4).map((item, i) => (
+        <div className="mt-5 sm:flex sm:flex-wrap gap-2 justify-between">
+        {items.slice(5, 9).map((item, i) => (
             <Item key={`${item.name}-${i}`} item={item} />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>
