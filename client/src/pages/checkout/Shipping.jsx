@@ -8,18 +8,20 @@ const Shipping = ({values, errors, touched, handleBlur, handleChange, setFieldVa
       <p className='mb-4 text-sm font-bold'>Billing Information</p>
       <AddressForm 
         type="billingAddress"
-        value={values.billingAddress}
+        values={values.billingAddress}
         errors={errors}
         touched={touched}
         handleBlur={handleBlur}
         handleChange={handleChange}
       />
 
-      <div className='mb-5'>
+      <div className='my-5 '>
         <input 
             type="checkbox" 
-            className='checkbox'
-            checked
+            className='checkbox rounded-none'
+            values={values.shippingAddress.isSameAddress}
+            label="Same for Shipping Address"
+            
             onChange={() => setFieldValue("shippingAddress.isSameAddress", !values.shippingAddress.isSameAddress)}
         />
       </div>
@@ -30,7 +32,7 @@ const Shipping = ({values, errors, touched, handleBlur, handleChange, setFieldVa
             <p className='mb-4 text-sm font-bold'>Shipping Information</p>
             <AddressForm 
                 type="shippingAddress"
-                value={values.shippingAddress}
+                values={values.shippingAddress}
                 errors={errors}
                 touched={touched}
                 handleBlur={handleBlur}

@@ -1,9 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import Shipping from './Shipping';
+import React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Formik } from "formik";
+import * as yup from "yup";
+import Shipping from "./Shipping";
+import Payment from "./Payment";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51N6i6REaGMrxHicLwHoGvO03eD7Em56jofjoznFvuBrLQZ5QKMto0hb09xrbakyoLhgL8hP86BycP8YqV4La2Gm200UxMFeg2L"
+)
 
 const initialValues = {
   billingAddress: {
@@ -88,17 +94,49 @@ const Checkout = () => {
   const isFirstStep = activeStep === 0;
   const isSecondStep = activeStep === 1;
 
-  const handleFormSubmit = async (value, actions) => {
+  const handleFormSubmit = async (values, actions) => {
     setActiveStep(activeStep + 1);
-  }
+
+    //If billing is same as shipping
+    if (isFirstStep && values.shippingAddress.isSameAddress) {
+      actions.setFieldValue("shippingAddress", {
+        ...values.billingAddress,
+        isSameAddress: true,
+      });
+    }
+
+    if (isSecondStep) {
+      makePayment(values);
+    }
+
+    actions.setTouched({});
+  };
 
   const makePayment = async (values) => {
+    const stripe = await stripePromise;
+    const requestBody = {
+      userName: [values.firstName, values.lastName].join(' '),
+      email: values.email,
+      products: cart.map(({ id, count }) => ({
+        id,
+        count,
+      }))
+    };
 
-  }
+    const response = await fetch("http://localhost:1337/api/orders", {
+      headers: { "Content-Type" : "application/json"},
+      body: JSON.stringify(requestBody)
+    });
+
+    const session = await response.json();
+    await stripe.redirectToCheckout({
+      sessionId: session.id
+    });
+  };
 
   return (
-    <div className='w-4/5 my-24 mx-auto border'>
-      <ul className='steps w-full'>
+    <div className="w-4/5 my-24 mx-auto ">
+      <ul className="steps w-full">
         <li className={activeStep === 0 ? `step step-primary` : `step`}></li>
         <li className={activeStep === 1 ? `step step-primary` : `step`}></li>
       </ul>
@@ -120,7 +158,7 @@ const Checkout = () => {
           }) => (
             <form onSubmit={handleSubmit}>
               {isFirstStep && (
-                <Shipping 
+                <Shipping
                   values={values}
                   errors={errors}
                   touched={touched}
@@ -129,12 +167,40 @@ const Checkout = () => {
                   setFieldValue={setFieldValue}
                 />
               )}
+              {isSecondStep && (
+                <Payment
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  setFieldValue={setFieldValue}
+                />
+              )}
+
+              <div className="flex justify-between gap-12">
+                {!isFirstStep && (
+                  <div
+                    className="w-full primary text-white bg-primary-200 rounded-none py-4 px-10"
+                    onClick={() => setActiveStep(activeStep - 1)}
+                  >
+                    Back
+                  </div>
+                )}
+
+                <div
+                  className="w-full btn btn-primary text-white text-center bg-primary rounded-none py-4 px-10 border-2"
+                  type="submit"
+                >
+                  {!isSecondStep ? "NEXT" : "Place Order"}
+                </div>
+              </div>
             </form>
           )}
         </Formik>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;
