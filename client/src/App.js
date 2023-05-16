@@ -19,7 +19,7 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <div className="App" data-theme="pastel">
+    <div className="App" data-theme="autumn">
       <BrowserRouter>
         <Navbar />
         <ScrollToTop />

@@ -179,10 +179,10 @@ const Checkout = () => {
                 />
               )}
 
-              <div className="flex justify-between">
-                {!isFirstStep && (
+              <div className="sm:flex justify-between items-center">
+                {isSecondStep && (
                   <button
-                    className="w-full basis-1/2 btn btn-primary  text-white text-center bg-primary rounded-none py-4 px-10"
+                    className="w-full flex-1 sm:mr-5 btn btn-secondary  text-white text-center bg-neutral-500 rounded-none py-4 px-10 mb-4 sm:mb-0"
                     onClick={() => setActiveStep(activeStep - 1)}
                   >
                     Back
@@ -190,10 +190,11 @@ const Checkout = () => {
                 )}
 
                 <button
-                  className="w-full btn btn-primary text-white text-center bg-primary rounded-none py-4 px-10 border-2 border-red-500 mx-auto "
+                  className="w-full flex-1 btn btn-primary text-white text-center bg-primary rounded-none py-4 px-10  mx-auto "
                   type="submit"
+                  value="Submit"
                 >
-                  {!isSecondStep ? "NEXT" : "Place Order"}
+                  {isFirstStep ? "NEXT" : "Place Order"}
                 </button>
               </div>
             </form>
