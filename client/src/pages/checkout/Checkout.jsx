@@ -124,7 +124,8 @@ const Checkout = () => {
     };
 
     const response = await fetch("http://localhost:1337/api/orders", {
-      headers: { "Content-Type" : "application/json"},
+      method: "POST",
+      headers: { "Content-Type": "application/json"},
       body: JSON.stringify(requestBody)
     });
 
@@ -137,7 +138,7 @@ const Checkout = () => {
   return (
     <div className="w-4/5 my-24 mx-auto ">
       <ul className="steps w-full">
-        <li className={activeStep === 0 ? `step step-primary` : `step`}></li>
+        <li className={`step step-primary`}></li>
         <li className={activeStep === 1 ? `step step-primary` : `step`}></li>
       </ul>
 
@@ -178,22 +179,22 @@ const Checkout = () => {
                 />
               )}
 
-              <div className="flex justify-between gap-12">
+              <div className="flex justify-between">
                 {!isFirstStep && (
-                  <div
-                    className="w-full primary text-white bg-primary-200 rounded-none py-4 px-10"
+                  <button
+                    className="w-full basis-1/2 btn btn-primary  text-white text-center bg-primary rounded-none py-4 px-10"
                     onClick={() => setActiveStep(activeStep - 1)}
                   >
                     Back
-                  </div>
+                  </button>
                 )}
 
-                <div
-                  className="w-full btn btn-primary text-white text-center bg-primary rounded-none py-4 px-10 border-2"
+                <button
+                  className="w-full btn btn-primary text-white text-center bg-primary rounded-none py-4 px-10 border-2 border-red-500 mx-auto "
                   type="submit"
                 >
                   {!isSecondStep ? "NEXT" : "Place Order"}
-                </div>
+                </button>
               </div>
             </form>
           )}

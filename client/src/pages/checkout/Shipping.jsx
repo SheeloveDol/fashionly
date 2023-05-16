@@ -15,15 +15,18 @@ const Shipping = ({values, errors, touched, handleBlur, handleChange, setFieldVa
         handleChange={handleChange}
       />
 
-      <div className='my-5 '>
-        <input 
-            type="checkbox" 
-            className='checkbox rounded-none'
-            values={values.shippingAddress.isSameAddress}
-            label="Same for Shipping Address"
-            
-            onChange={() => setFieldValue("shippingAddress.isSameAddress", !values.shippingAddress.isSameAddress)}
-        />
+      <div className='my-5'>
+        <label className="label cursor-pointer justify-normal">
+        
+            <input 
+                type="checkbox" 
+                className='checkbox rounded-none'
+                values={values.shippingAddress.isSameAddress}
+                checked
+                onChange={() => setFieldValue("shippingAddress.isSameAddress", !values.shippingAddress.isSameAddress)}
+            />
+            <span className='pl-2'>Same for Shipping Address</span>
+        </label>
       </div>
 
       {/* SHIPPING FORM */}
