@@ -16,7 +16,7 @@ const Navbar = () => {
       <div 
         className="flex w-4/5 m-auto justify-between items-center">
         <div onClick={() => navigate("/")} className="cursor-pointer hover">
-          <p className="text-red-500 underline">Fashionly</p>
+          <p className="text-secondary underline">Fashionly</p>
         </div>
         <div className="flex justify-between gap-5 z-2">
           <button>

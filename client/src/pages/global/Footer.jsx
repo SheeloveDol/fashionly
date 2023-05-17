@@ -13,7 +13,7 @@ const Footer = () => {
       <div className='md:flex w-4/5 m-auto justify-between md:gap-y-7  md:gap-x-7  '
       >
         <div className='md:w-1/5 md:w-3/10 lg:w-2/5 '>
-            <h4 className='mb-3 sm:mb-7 font-bold text-secondary-content'>Fashionly</h4>
+            <h4 className='mb-3 sm:mb-7 font-bold text-secondary'>Fashionly</h4>
             <FooterText>
                 Uspendisse vel mi ac augue commodo ultricies a sed risus. Vestibulum eu elit pulvinar, convallis ligula id, lobortis nibh. Praesent varius id nulla a hendrerit. 
             </FooterText>

@@ -6,7 +6,7 @@ import Subscribe from './Subscribe';
 
 const Home = () => {
   return (
-    <div className='w-full relative top-[60px] bg-white'>
+    <div className='w-full relative top-[60px] '>
       <MainCarousel  />
       <ShoppingList />
       <Subscribe />

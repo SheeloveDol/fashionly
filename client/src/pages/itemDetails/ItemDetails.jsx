@@ -70,7 +70,7 @@ const ItemDetails = () => {
 
           {/* COUNT AND BUTTONS */}
           <div className="flex items-center min-h-12 justify-normal gap-4">
-            <div className="btn border-none bg-slate-200 flex items-center justify-between  rounded-none py-1  px-3 w-24">
+            <div className="btn btn-outline border-2 border-black flex items-center justify-between  rounded-none py-1  px-3 w-24">
               <button onClick={() => setCount(Math.max(count - 1, 1))}>
                 <MdRemove />
               </button>

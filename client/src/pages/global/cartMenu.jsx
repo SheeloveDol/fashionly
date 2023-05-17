@@ -82,7 +82,7 @@ const CartMenu = () => {
 
                     {/* NUMBER OF ITEMS */}
                     <FlexBox className="my-[15px]">
-                      <div className="flex btn btn-outline rounded-none p-0 justify-between items-center border-[1.5px]">
+                      <div className="flex btn btn-outline rounded-none p-0 justify-between items-center border-2">
                           <MdRemove 
                             className="cursor-pointer mx-4"
                             onClick={() =>
